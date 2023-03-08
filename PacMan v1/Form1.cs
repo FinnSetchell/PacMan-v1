@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -49,7 +51,9 @@ namespace PacMan_v1
 
         private void mainGameTimer(object sender, EventArgs e)
         {
-            txtScore.Text = "SCORE: " + score;
+            txtScore.Text = score.ToString();
+            int prevLeft = pacman.Left;
+            int prevTop = pacman.Top;
 
             if (goLeft)
             {
@@ -106,10 +110,8 @@ namespace PacMan_v1
                     {
                         if (pacman.Bounds.IntersectsWith(x.Bounds))
                         {
-                            if (goLeft) goLeft = false;
-                            if (goRight) goRight = false;
-                            if (goUp) goUp = false;
-                            if (goDown) goDown = false;
+                            pacman.Left = prevLeft;
+                            pacman.Top = prevTop;
                         }
 
                         if (pinkGhost.Bounds.IntersectsWith(x.Bounds))
@@ -168,7 +170,9 @@ namespace PacMan_v1
 
         private void resetGame()
         {
-            txtScore.Text = "SCORE: 0";
+            txtGameOver.Visible = false;
+            label3.Visible = false;
+            txtScore.Text = "0";
             score = 0;
 
             playerSpeed = 8;
@@ -204,9 +208,11 @@ namespace PacMan_v1
         {
             isGameOver = true;
             gameTimer.Stop();
-            
-            txtScore.Text = "SCORE: " + score + Environment.NewLine + message;
 
+            txtScore.Text = score.ToString();
+            txtGameOver.Text = message + Environment.NewLine + "press ENTER to play again";
+            txtGameOver.Visible = true;
+            label3.Visible = true;
         }
 
     }
