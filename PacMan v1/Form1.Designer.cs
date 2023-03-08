@@ -122,7 +122,7 @@
             this.wall1.BackColor = System.Drawing.Color.Blue;
             this.wall1.Location = new System.Drawing.Point(121, -13);
             this.wall1.Name = "wall1";
-            this.wall1.Size = new System.Drawing.Size(62, 194);
+            this.wall1.Size = new System.Drawing.Size(26, 194);
             this.wall1.TabIndex = 1;
             this.wall1.TabStop = false;
             this.wall1.Tag = "wall";
@@ -132,7 +132,7 @@
             this.wall2.BackColor = System.Drawing.Color.Blue;
             this.wall2.Location = new System.Drawing.Point(396, -13);
             this.wall2.Name = "wall2";
-            this.wall2.Size = new System.Drawing.Size(62, 194);
+            this.wall2.Size = new System.Drawing.Size(26, 194);
             this.wall2.TabIndex = 1;
             this.wall2.TabStop = false;
             this.wall2.Tag = "wall";
@@ -140,9 +140,9 @@
             // wall3
             // 
             this.wall3.BackColor = System.Drawing.Color.Blue;
-            this.wall3.Location = new System.Drawing.Point(254, 390);
+            this.wall3.Location = new System.Drawing.Point(243, 390);
             this.wall3.Name = "wall3";
-            this.wall3.Size = new System.Drawing.Size(62, 194);
+            this.wall3.Size = new System.Drawing.Size(26, 194);
             this.wall3.TabIndex = 1;
             this.wall3.TabStop = false;
             this.wall3.Tag = "wall";
@@ -152,7 +152,7 @@
             this.wall4.BackColor = System.Drawing.Color.Blue;
             this.wall4.Location = new System.Drawing.Point(529, 390);
             this.wall4.Name = "wall4";
-            this.wall4.Size = new System.Drawing.Size(62, 194);
+            this.wall4.Size = new System.Drawing.Size(26, 194);
             this.wall4.TabIndex = 1;
             this.wall4.TabStop = false;
             this.wall4.Tag = "wall";
@@ -204,7 +204,7 @@
             // pictureBox6
             // 
             this.pictureBox6.Image = global::PacMan_v1.Properties.Resources.coin;
-            this.pictureBox6.Location = new System.Drawing.Point(205, 137);
+            this.pictureBox6.Location = new System.Drawing.Point(191, 144);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(25, 25);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -215,7 +215,7 @@
             // pictureBox7
             // 
             this.pictureBox7.Image = global::PacMan_v1.Properties.Resources.coin;
-            this.pictureBox7.Location = new System.Drawing.Point(281, 137);
+            this.pictureBox7.Location = new System.Drawing.Point(267, 144);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(25, 25);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -226,7 +226,7 @@
             // pictureBox8
             // 
             this.pictureBox8.Image = global::PacMan_v1.Properties.Resources.coin;
-            this.pictureBox8.Location = new System.Drawing.Point(346, 137);
+            this.pictureBox8.Location = new System.Drawing.Point(332, 144);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(25, 25);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -248,7 +248,7 @@
             // pictureBox10
             // 
             this.pictureBox10.Image = global::PacMan_v1.Properties.Resources.coin;
-            this.pictureBox10.Location = new System.Drawing.Point(281, 26);
+            this.pictureBox10.Location = new System.Drawing.Point(267, 17);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(25, 25);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -259,7 +259,7 @@
             // pictureBox11
             // 
             this.pictureBox11.Image = global::PacMan_v1.Properties.Resources.coin;
-            this.pictureBox11.Location = new System.Drawing.Point(346, 26);
+            this.pictureBox11.Location = new System.Drawing.Point(332, 17);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(25, 25);
             this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -292,7 +292,7 @@
             // pictureBox14
             // 
             this.pictureBox14.Image = global::PacMan_v1.Properties.Resources.coin;
-            this.pictureBox14.Location = new System.Drawing.Point(205, 26);
+            this.pictureBox14.Location = new System.Drawing.Point(191, 17);
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.Size = new System.Drawing.Size(25, 25);
             this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -303,7 +303,7 @@
             // pictureBox17
             // 
             this.pictureBox17.Image = global::PacMan_v1.Properties.Resources.coin;
-            this.pictureBox17.Location = new System.Drawing.Point(338, 516);
+            this.pictureBox17.Location = new System.Drawing.Point(316, 514);
             this.pictureBox17.Name = "pictureBox17";
             this.pictureBox17.Size = new System.Drawing.Size(25, 25);
             this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -314,7 +314,7 @@
             // pictureBox18
             // 
             this.pictureBox18.Image = global::PacMan_v1.Properties.Resources.coin;
-            this.pictureBox18.Location = new System.Drawing.Point(414, 516);
+            this.pictureBox18.Location = new System.Drawing.Point(392, 514);
             this.pictureBox18.Name = "pictureBox18";
             this.pictureBox18.Size = new System.Drawing.Size(25, 25);
             this.pictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -325,7 +325,7 @@
             // pictureBox19
             // 
             this.pictureBox19.Image = global::PacMan_v1.Properties.Resources.coin;
-            this.pictureBox19.Location = new System.Drawing.Point(479, 516);
+            this.pictureBox19.Location = new System.Drawing.Point(457, 514);
             this.pictureBox19.Name = "pictureBox19";
             this.pictureBox19.Size = new System.Drawing.Size(25, 25);
             this.pictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -336,7 +336,7 @@
             // pictureBox20
             // 
             this.pictureBox20.Image = global::PacMan_v1.Properties.Resources.coin;
-            this.pictureBox20.Location = new System.Drawing.Point(414, 405);
+            this.pictureBox20.Location = new System.Drawing.Point(392, 406);
             this.pictureBox20.Name = "pictureBox20";
             this.pictureBox20.Size = new System.Drawing.Size(25, 25);
             this.pictureBox20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -347,7 +347,7 @@
             // pictureBox21
             // 
             this.pictureBox21.Image = global::PacMan_v1.Properties.Resources.coin;
-            this.pictureBox21.Location = new System.Drawing.Point(479, 405);
+            this.pictureBox21.Location = new System.Drawing.Point(457, 406);
             this.pictureBox21.Name = "pictureBox21";
             this.pictureBox21.Size = new System.Drawing.Size(25, 25);
             this.pictureBox21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -358,7 +358,7 @@
             // pictureBox22
             // 
             this.pictureBox22.Image = global::PacMan_v1.Properties.Resources.coin;
-            this.pictureBox22.Location = new System.Drawing.Point(338, 405);
+            this.pictureBox22.Location = new System.Drawing.Point(316, 406);
             this.pictureBox22.Name = "pictureBox22";
             this.pictureBox22.Size = new System.Drawing.Size(25, 25);
             this.pictureBox22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

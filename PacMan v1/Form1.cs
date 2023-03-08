@@ -55,18 +55,15 @@ namespace PacMan_v1
             {
                 pacman.Left -= playerSpeed;
                 pacman.Image = Properties.Resources.left;
-            }
-            if (goRight)
+            } else if (goRight)
             {
                 pacman.Left += playerSpeed;
                 pacman.Image = Properties.Resources.right;
-            }
-            if (goUp)
+            } else if (goUp)
             {
                 pacman.Top -= playerSpeed;
                 pacman.Image = Properties.Resources.Up;
-            }
-            if (goDown)
+            } else if (goDown)
             {
                 pacman.Top += playerSpeed;
                 pacman.Image = Properties.Resources.down;
@@ -109,8 +106,10 @@ namespace PacMan_v1
                     {
                         if (pacman.Bounds.IntersectsWith(x.Bounds))
                         {
-                            // game lost
-                            gameOver("Lmao, you suck!");
+                            if (goLeft) goLeft = false;
+                            if (goRight) goRight = false;
+                            if (goUp) goUp = false;
+                            if (goDown) goDown = false;
                         }
 
                         if (pinkGhost.Bounds.IntersectsWith(x.Bounds))
