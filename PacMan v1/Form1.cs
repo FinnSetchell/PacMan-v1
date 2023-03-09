@@ -18,8 +18,15 @@ namespace PacMan_v1
     {
         bool goUp, goDown, goLeft, goRight, isGameOver;
 
-        int score, playerSpeed, ghostSpeed, yellowGhostSpeed, pinkGhostX, pinkGhostY;
+        int score, playerSpeed;
 
+        List<Ghost> ghosts = new List<Ghost>{
+            new Ghost("Blinky", 435, 305, 1, 2, false),
+            new Ghost("Pinky", 435, 340, 2, 2, false),
+            new Ghost("Inky", 435, 375, 3, 2, false)
+            //new Ghost("Clyde", 0, 0, 4, 1, false)
+        };
+        
         public Form1()
         {
             InitializeComponent();
@@ -60,17 +67,17 @@ namespace PacMan_v1
                 pacman.Left -= playerSpeed;
                 pacman.Image = Properties.Resources.left;
             }
-            else if (goRight)
+            if (goRight)
             {
                 pacman.Left += playerSpeed;
                 pacman.Image = Properties.Resources.right;
             }
-            else if (goUp)
+            if (goUp)
             {
                 pacman.Top -= playerSpeed;
                 pacman.Image = Properties.Resources.Up;
             }
-            else if (goDown)
+            if (goDown)
             {
                 pacman.Top += playerSpeed;
                 pacman.Image = Properties.Resources.down;
@@ -78,17 +85,17 @@ namespace PacMan_v1
 
             if (pacman.Left < -10)
             {
-                pacman.Left = 680;
+                pacman.Left = 760;
             }
-            if (pacman.Left > 680)
+            if (pacman.Left > 760)
             {
                 pacman.Left = -10;
             }
             if (pacman.Top < -10)
             {
-                pacman.Top = 550;
+                pacman.Top = 760;
             }
-            if (pacman.Top > 550)
+            if (pacman.Top > 980)
             {
                 pacman.Top = 0;
             }
@@ -115,12 +122,11 @@ namespace PacMan_v1
                             pacman.Top = prevTop;
                         }
 
-                        if (Inky.Bounds.IntersectsWith(x.Bounds))
-                        {
-                            pinkGhostX = -pinkGhostX;
-                        }
+                        if (Blinky.Bounds.IntersectsWith(x.Bounds)) { MoveGhost(Blinky, 0, -1); }
+                        if (Pinky.Bounds.IntersectsWith(x.Bounds)) { MoveGhost(Pinky, 1, -1); }
+                        if (Inky.Bounds.IntersectsWith(x.Bounds)) { MoveGhost(Inky, 2, -1); }
                     }
-                    // ends game if pacman touchy ghosts
+                    // ends game if pacman touches ghosts
                     if ((string)x.Tag == "ghost")
                     {
                         if (pacman.Bounds.IntersectsWith(x.Bounds))
@@ -139,47 +145,63 @@ namespace PacMan_v1
             }
 
 
-
             //**  ghost movement  **//
-            Blinky.Left += redGhostSpeed;
-            if (Blinky.Bounds.IntersectsWith(wall1.Bounds) || Blinky.Bounds.IntersectsWith(wall2.Bounds))
+            MoveGhost(Blinky, 0, ghosts[0].Direction);
+            MoveGhost(Pinky, 1, ghosts[1].Direction);
+            MoveGhost(Inky, 2, ghosts[2].Direction);
+
+        }
+
+        public void MoveGhost(PictureBox ghost, int ghostsInt, int direction)
+        {
+            if (direction == -1)
             {
-                redGhostSpeed = -redGhostSpeed;
+                // Generate a random direction
+                Random random = new Random();
+                direction = random.Next(4);
+                ghosts[ghostsInt].Direction = direction;
             }
 
-            Pinky.Left += yellowGhostSpeed;
-            if (Pinky.Bounds.IntersectsWith(wall3.Bounds) || Pinky.Bounds.IntersectsWith(wall4.Bounds))
+            // Compute the new position based on the direction and speed of the ghost
+            int dx = 0, dy = 0;
+            switch (direction)
             {
-                yellowGhostSpeed = -yellowGhostSpeed;
+                case 0: dy = -ghosts[ghostsInt].Speed; break; // up
+                case 1: dy = ghosts[ghostsInt].Speed; break; // down
+                case 2: dx = -ghosts[ghostsInt].Speed; break; // left
+                case 3: dx = ghosts[ghostsInt].Speed; break; // right
             }
+            int newTop = ghost.Top + dx;
+            int newLeft = ghost.Left + dy;
 
-            Inky.Left -= pinkGhostX;
-            Inky.Top -= pinkGhostY;
-
-            if (Inky.Top < 0 || Inky.Top > 520)
+            // Check if the new position is within the boundaries of the game
+            if (newTop >= 0 && newTop + ghost.Height <= 760 &&
+                newLeft >= 0 && newLeft + ghost.Width <= 980)
             {
-                pinkGhostY = -pinkGhostY;
+                // Move the ghost to the new position
+                ghost.Top = newTop;
+                ghost.Left = newLeft;
             }
-
-            if (Inky.Right < 0 || Inky.Right > 620)
+            else
             {
-                pinkGhostX = -pinkGhostX;
+                // Choose a new random direction
+                MoveGhost(ghost, ghostsInt, -1);
             }
-            
         }
 
         private void resetGame()
         {
-            // Create an array of ghosts
-            List<Ghost> ghosts = new List<Ghost>();
-            ghosts.Add(new Ghost("Blinky", 289, 411, 1));
-            ghosts.Add(new Ghost("Pinky", 327, 411, 2));
-            ghosts.Add(new Ghost("Inky", 365, 411, 3));
-            //ghosts.Add(new Ghost("Clyde", 0, 0, 4));
+            
+            Blinky.Left = ghosts[0].Left;
+            Blinky.Top = ghosts[0].Top;
+            Pinky.Left = ghosts[1].Left;
+            Pinky.Top = ghosts[1].Top;
+            Inky.Left = ghosts[2].Left;
+            Inky.Top = ghosts[2].Top;
 
             // reset & hide labels
-            txtGameOver.Visible = false;
-            label3.Visible = false;
+            txtGameOverLabel.Visible = false;
+            gameOverLabel.Visible = false;
             txtScore.Text = "0";
             score = 0;
 
@@ -208,9 +230,9 @@ namespace PacMan_v1
             gameTimer.Stop();
 
             txtScore.Text = score.ToString();
-            txtGameOver.Text = message + Environment.NewLine + "press ENTER to play again";
-            txtGameOver.Visible = true;
-            label3.Visible = true;
+            txtGameOverLabel.Text = message + Environment.NewLine + "press ENTER to play again";
+            txtGameOverLabel.Visible = true;
+            gameOverLabel.Visible = true;
         }
 
     }
@@ -218,17 +240,19 @@ namespace PacMan_v1
     public class Ghost
     {
         public string name;
-        public int x;
-        public int y;
+        public int top;
+        public int left;
         public int speed;
+        public int direction;
         public bool frightened;
 
-        public Ghost(string name, int x, int y, int speed)
+        public Ghost(string name, int top, int left, int speed, int direction, bool frightened)
         {
             this.name = name;
-            this.x = x;
-            this.y = y;
+            this.top = top;
+            this.left = left;
             this.speed = speed;
+            this.direction = direction;
             this.frightened = false;
         }
 
@@ -252,30 +276,30 @@ namespace PacMan_v1
             get { return name; }
             set { name = value; }
         }
-        public int X
+        public int Top
         {
-            get { return x; }
-            set { x = value; }
+            get { return top; }
+            set { top = value; }
         }
-        public int Y
+        public int Left
         {
-            get { return y; }
-            set { y = value; }
+            get { return left; }
+            set { left = value; }
         }
         public int Speed
         {
             get { return speed; }
             set { speed = value; }
         }
+        public int Direction
+        {
+            get { return direction; }
+            set { direction = value; }
+        }
         public bool Frightened
         {
             get { return frightened; }
             set { frightened = value; }
-        }
-        public void Move(int dx, int dy)
-        {
-            x += dx;
-            y += dy;
         }
     }
 
