@@ -20,11 +20,6 @@ namespace PacMan_v1
 
         int score, playerSpeed, ghostSpeed, yellowGhostSpeed, pinkGhostX, pinkGhostY;
 
-        private void redGhost_Click(object sender, EventArgs e)
-        {
-
-        }
-
         public Form1()
         {
             InitializeComponent();

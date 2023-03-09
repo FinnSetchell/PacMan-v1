@@ -36,7 +36,6 @@
             this.Pinky = new System.Windows.Forms.PictureBox();
             this.Blinky = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtGameOver = new System.Windows.Forms.Label();
             this.Inky = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -97,16 +96,10 @@
             this.pictureBox60 = new System.Windows.Forms.PictureBox();
             this.pictureBox61 = new System.Windows.Forms.PictureBox();
             this.pictureBox62 = new System.Windows.Forms.PictureBox();
-            this.pictureBox63 = new System.Windows.Forms.PictureBox();
             this.pictureBox64 = new System.Windows.Forms.PictureBox();
-            this.pictureBox65 = new System.Windows.Forms.PictureBox();
             this.pictureBox66 = new System.Windows.Forms.PictureBox();
-            this.pictureBox67 = new System.Windows.Forms.PictureBox();
             this.pictureBox68 = new System.Windows.Forms.PictureBox();
-            this.pictureBox69 = new System.Windows.Forms.PictureBox();
-            this.pictureBox70 = new System.Windows.Forms.PictureBox();
             this.pictureBox71 = new System.Windows.Forms.PictureBox();
-            this.pictureBox72 = new System.Windows.Forms.PictureBox();
             this.pictureBox73 = new System.Windows.Forms.PictureBox();
             this.pictureBox74 = new System.Windows.Forms.PictureBox();
             this.pictureBox75 = new System.Windows.Forms.PictureBox();
@@ -118,7 +111,6 @@
             this.pictureBox81 = new System.Windows.Forms.PictureBox();
             this.pictureBox82 = new System.Windows.Forms.PictureBox();
             this.pictureBox83 = new System.Windows.Forms.PictureBox();
-            this.pictureBox84 = new System.Windows.Forms.PictureBox();
             this.pictureBox85 = new System.Windows.Forms.PictureBox();
             this.pictureBox86 = new System.Windows.Forms.PictureBox();
             this.pictureBox87 = new System.Windows.Forms.PictureBox();
@@ -667,7 +659,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox312)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox313)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox314)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox315)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox316)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox317)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox318)).BeginInit();
