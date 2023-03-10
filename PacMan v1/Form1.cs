@@ -21,10 +21,10 @@ namespace PacMan_v1
         int score, playerSpeed;
 
         List<Ghost> ghosts = new List<Ghost>{
-            new Ghost("Blinky", 435, 305, 1, 2, false),
-            new Ghost("Pinky", 435, 340, 2, 2, false),
-            new Ghost("Inky", 435, 375, 3, 2, false)
-            //new Ghost("Clyde", 0, 0, 4, 1, false)
+            new Ghost("Blinky", 435, 305, 1, 2, 0, false),
+            new Ghost("Pinky", 435, 340, 2, 2, 0, false),
+            new Ghost("Inky", 435, 375, 3, 2, 0, false)
+            //new Ghost("Clyde", 0, 0, 4, 2, 0, false)
         };
         
         public Form1()
@@ -122,9 +122,9 @@ namespace PacMan_v1
                             pacman.Top = prevTop;
                         }
 
-                        if (Blinky.Bounds.IntersectsWith(x.Bounds)) { MoveGhost(Blinky, 0, -1); }
-                        if (Pinky.Bounds.IntersectsWith(x.Bounds)) { MoveGhost(Pinky, 1, -1); }
-                        if (Inky.Bounds.IntersectsWith(x.Bounds)) { MoveGhost(Inky, 2, -1); }
+                        if (Blinky.Bounds.IntersectsWith(x.Bounds)) { MoveGhost(Blinky, 0, -ghosts[0].Direction); MoveGhost(Blinky, 0, -1); }
+                        if (Pinky.Bounds.IntersectsWith(x.Bounds)) { MoveGhost(Pinky, 1, -ghosts[0].Direction); MoveGhost(Pinky, 1, -1); }
+                        if (Inky.Bounds.IntersectsWith(x.Bounds)) { MoveGhost(Inky, 2, -ghosts[0].Direction); MoveGhost(Inky, 2, -1); }
                     }
                     // ends game if pacman touches ghosts
                     if ((string)x.Tag == "ghost")
@@ -156,7 +156,7 @@ namespace PacMan_v1
         {
             if (direction == -1)
             {
-                while (direction != ghosts[ghostsInt].Direction)
+                while (direction == ghosts[ghostsInt].Direction || direction == ghosts[ghostsInt].PrevDirection)
                 {
                     // Generate a random direction
                     Random random = new Random();
@@ -174,22 +174,12 @@ namespace PacMan_v1
                 case 2: dx = -ghosts[ghostsInt].Speed; break; // left
                 case 3: dx = ghosts[ghostsInt].Speed; break; // right
             }
+
             int newTop = ghost.Top + dx;
             int newLeft = ghost.Left + dy;
 
-            // Check if the new position is within the boundaries of the game
-            if (newTop >= 0 && newTop + ghost.Height <= 760 &&
-                newLeft >= 0 && newLeft + ghost.Width <= 980)
-            {
-                // Move the ghost to the new position
-                ghost.Top = newTop;
-                ghost.Left = newLeft;
-            }
-            else
-            {
-                // Choose a new random direction
-                MoveGhost(ghost, ghostsInt, -1);
-            }
+            ghost.Top = newTop;
+            ghost.Left = newLeft;
         }
 
         private void resetGame()
@@ -247,15 +237,17 @@ namespace PacMan_v1
         public int left;
         public int speed;
         public int direction;
+        public int prevDirection;
         public bool frightened;
 
-        public Ghost(string name, int top, int left, int speed, int direction, bool frightened)
+        public Ghost(string name, int top, int left, int speed, int direction, int prevDirection, bool frightened)
         {
             this.name = name;
             this.top = top;
             this.left = left;
             this.speed = speed;
             this.direction = direction;
+            this.prevDirection = prevDirection;
             this.frightened = false;
         }
 
@@ -298,6 +290,11 @@ namespace PacMan_v1
         {
             get { return direction; }
             set { direction = value; }
+        }
+        public int PrevDirection
+        {
+            get { return prevDirection; }
+            set { prevDirection = value; }
         }
         public bool Frightened
         {
