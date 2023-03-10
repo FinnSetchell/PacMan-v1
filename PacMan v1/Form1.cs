@@ -156,9 +156,12 @@ namespace PacMan_v1
         {
             if (direction == -1)
             {
-                // Generate a random direction
-                Random random = new Random();
-                direction = random.Next(4);
+                while (direction != ghosts[ghostsInt].Direction)
+                {
+                    // Generate a random direction
+                    Random random = new Random();
+                    direction = random.Next(4);
+                }
                 ghosts[ghostsInt].Direction = direction;
             }
 
